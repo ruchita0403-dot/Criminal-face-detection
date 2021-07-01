@@ -1,0 +1,106 @@
+<!-- <!doctype html>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<body class="text-center" style="background-color: antiquewhite;">
+    <div class="container">    
+        <title>Upload Image</title>
+        <h1>Upload Image</h1>
+        <br>
+        <form method=post enctype=multipart/form-data>
+            <div class="form-floating">
+                <input type=file name=image>
+            </div>
+            <br>
+            <input type=submit class="btn btn-primary" value=Predict>
+            <br>
+        </form>
+        <h3>Image choosen:{{image_loc}}</h3>
+        {% if image_loc %}
+            <img src="static/{{image_loc}}" width="250" height="250">
+        {% endif %}
+        <br>
+        <h3>Prediction:{{pred}}</h3>
+    </div>
+</body> -->
+<!doctype html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Criminal Detection System</title>
+    <style>
+        body{
+            background: linear-gradient(rgba(0,0,50,0.5),rgba(0,0,50,0.5)),url(bg.jpg);
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: white;
+            font-family: sans-serif;
+
+        }
+        .crim
+        {
+            color: red;
+            background-color: white;
+        }
+        .non-crim{
+            color: green;
+            background-color: white;
+        }
+        .form-title
+        {
+            margin-top: 50px;
+            color: white;
+            text-transform: uppercase;
+            transition: all 4s ease-in-out;
+        }
+        .form-title h1{
+            font-size: 50px;
+            line-height: 10px;
+        }
+        .sub{
+            color:black;
+
+        }
+    </style>
+</head>
+
+<body class="text-center">
+    <div class="container">
+        <div class="form-title">   
+        <h1>Criminal Detection System</h1>
+        </div> 
+        <br>
+        <div class="sub">
+            <marquee><h5>Please upload an image.</h5></marquee>
+        </div>
+        <form method=post enctype=multipart/form-data>
+            <div class="form-floating">
+                <input type=file name=image>
+            </div>
+            <br>
+            <input type=submit class="btn btn-primary" value=Predict>
+            <br>
+        </form>
+        <br>
+        <h4>Image chosen: {{image_loc}}</h4>
+        <br>
+        {% if image_loc %}
+            <img src="static/{{image_loc}}" width="200" height="200">
+        {% endif %}
+        <br>
+        <br>
+        {% if pred=='Criminal' %}
+        <div class="crim">
+        <h3><b>Prediction: This person is a CRIMINAL.</b></h3>
+        </div>
+        {% endif %}
+        {% if pred=='notCriminal' %}
+        <div class="non-crim">
+        <h3><b>Prediction: This person is NOT A CRIMINAL.</b></h3>
+        </div>
+        {% endif %}
+
+    </div>
+</body>
+</html>
